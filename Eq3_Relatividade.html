@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="stylesheet" type="text/css" href="equaçõesStyle.css">
+    <meta charset="utf-8">
+    <title>Equação da Teoria da Relatividade</title>
+  </head>
+  
+  <body>
+    <div class="container">
+      <div id="menu">
+        <ul class="nav">
+          <li><a href="Home.html">voltar</a></li>
+        </ul> 
+      </div>
+      <div class="bloco bloco-equacoes">
+        <!-- primeira coluna -->
+        <div class="primeira-coluna">
+          <h2 class="title title-nome-equacao">Equação da Teoria da Relatividade</h2>
+        </div>
+        <!-- segunda coluna -->
+        <div class="segunda-coluna">
+          <h2 class="title title-equacao"><p> E = m ∙ c<sup>2</sup> </p></h2>
+          <!--form class="form" name="myForm" method="post"-->
+            <p> E: <input id="e" name="e" type="text"> </p>
+            <p> m: <input id="m" name="m" type="text"> </p>
+            <p> c: <input id="c" name="c" type="text"> </p>
+            <p> Resultado: </p>
+            <p id="result"></p>
+            <button onclick="resultado()" class= "btn btn1" type="submit" value="Submit" name="resolver">resolver</button>
+          <!--/form-->
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function resultado() {
+        var e = document.getElementById("e").value;
+        var m = document.getElementById("m").value;
+        var c = document.getElementById("c").value;
+        var resultado;
+        var contador = 0;
+
+        if (e != "") {
+            contador++;
+        }
+        if (m != "") {
+            contador++;
+        }
+        if (c != "") {
+            contador++;
+        } 
+        if (contador < 2) {
+            alert("Digite pelo menos dois valores");
+            return false;
+        }
+        else if (contador == 3) {
+            alert("Um dos valores não deve ser informado")
+            return false;
+        }
+        else {
+            if (e == "" && m != "" && c != "") {
+                resultado = m * (Math.pow(c,2));
+            }
+            else if (e != "" && m == "" && c != "") {
+                resultado = e / (Math.pow(c,2));
+            }
+            else if (e != "" && m != "" && c == "") {
+                resultado = Math.sqrt(e / m);
+            }
+        }
+        document.getElementById("result").innerHTML = resultado;
+    }
+  </script>
+</html>

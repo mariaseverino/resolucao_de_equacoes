@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ecf0f1;
+}
+.bloco{
+    background-color: #fff;
+    border-radius: 15px;
+    width: 80%;
+    height: 50%;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.bloco::before{
+    content: "";
+    position: absolute;
+    background-color: black;
+    width: 40%;
+    height: 100%;
+}
+.title{
+    font-size: 28px;
+    font-weight: bold;
+
+}
+.title-nome-equacao{
+    color: #fff;
+    text-align: center;
+}
+.title-equacao{
+    color: black;
+}
+.btn{
+    border-radius: 15px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 10px;
+    padding: 10px 50px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 150px;
+    align-self: center;
+    border: none;
+}
+.btn1{
+    background-color: black;
+    border: 1px solid black;
+}
+.btn1:hover{
+    background-color: #fff;
+    color: black;
+}
+.bloco-equacoes{
+    display: flex;
+}
+.primeira-coluna{
+    width: 20%;
+    text-align: center;
+    flex: 1 0 auto;
+    z-index: 10;
+}
+.segunda-coluna{
+    flex: 2 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+}
+.form input{
+    height: 30px;
+    border: none;
+    background-color: #ecf0f1;
+    margin: 8px;
+}
+.form output{
+    height: 30px;
+    border: none;
+    background-color: #ecf0f1;
+    margin: 8px;
+}
+#menu {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+}
+ul.nav {
+    margin: 0;
+    padding: 0;
+}
+ul.nav li {
+    list-style: none;
+    display: inline;
+}
+ul.nav li a {
+    float: left;
+    width: 100px;
+    color: #333;
+    text-align: center;
+    padding: 0 0.2em 0.2em 0;
+    text-decoration: none;
+}
+ul.nav a:hover {
+    background: #999;
+    color: #fff;
+}
+math {
+    font-family: 'Open Sans', sans-serif;
+}

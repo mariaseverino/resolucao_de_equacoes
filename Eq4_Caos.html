@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="stylesheet" type="text/css" href="equaçõesStyle.css">
+    <meta charset="utf-8">
+    <title>Teoria do Caos</title>
+  </head>
+  
+  <body>
+    <div class="container">
+      <div id="menu">
+        <ul class="nav">
+          <li><a href="Home.html">voltar</a></li>
+        </ul> 
+      </div>
+      <div class="bloco bloco-equacoes">
+        <!-- primeira coluna -->
+        <div class="primeira-coluna">
+          <h2 class="title title-nome-equacao">Teoria do Caos</h2>
+        </div>
+        <!-- segunda coluna -->
+        <div class="segunda-coluna">
+          <h2 class="title title-equacao"><p> x<i><sub>new</sub></i> = k ∙ x<i><sub>old</sub></i> ∙ (1 - x<i><sub>old</sub></i>) </p></h2>
+          <!--form class="form" name="myForm" method="post"-->
+            <p> X<i><sub>new</sub></i> : <input id="Xn" name="Xn" type="text"> </p>
+            <p> k : <input id="k" name="k" type="text"> </p>
+            <p> X<i><sub>old</sub></i> : <input id="Xo" name="Xo" type="text"> </p>
+            <p> Resultado: </p>
+            <p id="result"></p>
+            <button onclick="resultado()" class="btn btn1" type="submit" value="Submit" name="resolver">resolver</button>
+          <!--/form-->
+        </div>
+      </div>
+    </div>
+  </body>
+  
+  <script>
+    function resultado() {
+        var Xn = document.getElementById("Xn").value;
+        var k = document.getElementById("k").value;
+        var Xo = document.getElementById("Xo").value;
+        var resultado;
+        var contador = 0;
+
+        if (Xn != "") {
+            contador++;
+        }
+        if (k != "") {
+            contador++;
+        }
+        if (Xo != "") {
+            contador++;
+        }
+        if (contador < 2) {
+            alert("Digite pelo menos dois valores");
+            return false;
+        }
+        else if (contador == 3) {
+            alert("Um dos valores não deve ser infromado");
+            return false;
+        }
+        else {
+            if (Xn != "" && k != "" && Xo == "") {
+                resultado = -(Xn/k);
+            }
+            else if (Xn != "" && k == "" && Xo != "") {
+                resultado = -(Xn/Xo);
+            }
+            else if (Xn == "" && k != "" && Xo != "") {
+                resultado = k*Xo*(1-Xo);
+            }
+        }
+        document.getElementById("result").innerHTML = resultado;
+    }
+  </script>
+</html>

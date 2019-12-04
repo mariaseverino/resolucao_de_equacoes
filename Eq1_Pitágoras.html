@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="stylesheet" type="text/css" href="equaçõesStyle.css">
+    <meta charset="utf-8">
+    <title>Teorema de Pitágoras</title>
+  </head>
+  
+  <body>
+    <div class="container">
+      <div id="menu">
+        <ul class="nav">
+          <li><a href="Home.html">voltar</a></li>
+        </ul> 
+      </div>
+      <div class="bloco bloco-equacoes">
+        <!-- primeira coluna -->
+        <div class="primeira-coluna">
+          <h2 class="title title-nome-equacao">Teorema de Pitágoras</h2>
+        </div>
+        <!-- segunda coluna -->
+        <div class="segunda-coluna">
+          <h2 class="title title-equacao"><p> a<sup>2</sup>+b<sup>2</sup>=c<sup>2</sup> </p></h2>
+          <!--form class="form" name="myForm" method="post"-->
+            <p> a: <input id="a" name="a" type="text"> </p>
+            <p> b: <input id="b" name="b" type="text"> </p>
+            <p> c: <input id="c" name="c" type="text"> </p>
+            <p> Resultado: </p>
+            <p id="result"></p>
+            <button onclick="resultado()" class="btn btn1" type="submit" value="Submit" name="resolver">resolver</button>
+          <!--/form-->
+        </div>
+      </div>
+    </div>
+  </body>
+  
+  <script>
+    function resultado() {
+        var a = (document.getElementById("a").value);
+        var b = (document.getElementById("b").value);
+        var c = (document.getElementById("c").value);
+        var resultado;
+        
+        var contador = 0;
+        if (a != "") {
+            contador++;
+        }
+        if (b != "") {
+            contador++;
+        }
+        if (c != "") {
+            contador++;
+        } 
+        if (contador < 2) {
+            alert("Digite pelo menos dois valores");
+            return false;
+        }
+        else if (contador == 3) {
+            alert("Um dos valores não deve ser informado")
+            return false;
+        }
+        else {
+            if (a != "" && b != "" && c == "") {
+                resultado = Math.sqrt(Math.pow(a,2) + Math.pow(b,2));
+            }
+            else if (a != "" && b == "" && c != "") {
+                if (Math.pow(a,2) > Math.pow(c,2)) { 
+                    alert("Sem solução real");
+                    return false;
+                }
+                resultado = Math.sqrt(Math.pow(c,2) - Math.pow(a,2));
+            }
+            else if (a == "" && b != "" && c != "") {
+                if (Math.pow(b,2) > Math.pow(c,2)) {
+                    alert("Sem solução real");
+                    return false;
+                }
+                resultado = Math.sqrt(Math.pow(c,2) - Math.pow(b,2));
+            }
+            document.getElementById("result").innerHTML = resultado;
+        }
+    }
+  </script>
+</html>

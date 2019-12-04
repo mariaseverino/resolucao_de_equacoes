@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="stylesheet" type="text/css" href="equaçõesStyle.css">
+    <meta charset="utf-8">
+    <title>Equação de Torricelli</title>
+  </head>
+  
+  <body>
+    <div class="container">
+      <div id="menu">
+        <ul class="nav">
+          <li><a href="Home.html">voltar</a></li>
+        </ul> 
+      </div>
+      <div class="bloco bloco-equacoes">
+        <!-- primeira coluna -->
+        <div class="primeira-coluna">
+          <h2 class="title title-nome-equacao">Equação de Torricelli</h2>
+        </div>
+        <!-- segunda coluna -->
+        <div class="segunda-coluna">
+          <h2 class="title title-equacao"><p>v<sup>2</sup> = v<sub>0</sub><sup>2</sup> + 2 ∙ a ∙ S</p></h2>
+          <!--form class="form"-->
+            <p> v: <input id="v" type="text">
+            <p> v<sub>0</sub>: <input id="v0" type="text">
+            <p> a: <input id="a" type="text">
+            <p> S: <input id="s" type="text">
+            <p> Resultado: </p>
+            <p id="result"></p>
+            <button onclick="resultado()" class="btn btn1" type="submit" value="Submit" name="resolver">resolver</button>
+          <!--/form-->
+        </div>
+      </div>
+    </div>
+  </body>
+  
+  <script>
+    function resultado() {
+        var v = document.getElementById("v").value;
+        var v0 = document.getElementById("v0").value;
+        var a = document.getElementById("a").value;
+        var s = document.getElementById("s").value;
+        var resultado;
+        var contador = 0;
+        
+        if (v != "") {
+            contador++;
+        }
+        if (v0 != "") {
+            contador++;
+        }
+        if (a != "") {
+            contador++;
+        }
+        if (s != "") {
+            contador++;
+        }
+        if (contador < 3) {
+            alert("Digite pelo menos tres valores");
+            return false;
+        }
+        else if (contador == 4) {
+            alert("Um dos valores não deve ser informado")
+            return false;
+        }
+        else {
+            if (v == "" && v0 != "" && a != "" && s != "") {
+                resultado = Math.sqrt(Math.pow(v0,2) + (2 * a * s));
+            }
+            else if (v != "" && v0 == "" && a != "" && s != "") {
+                resultado = Math.sqrt(Math.pow(v,2) - (2 * a * s));
+            }
+            else if (v != "" && v0 != "" && a == "" && s != "") {
+                resultado = (Math.pow(v,2) - Math.pow(v0,2))/2/s;
+            }
+            else if (v != "" && v0 != "" && a != "" && s == "") {
+                resultado = (Math.pow(v,2) - Math.pow(v0,2))/2/a;
+            }
+            document.getElementById("result").innerHTML = resultado;
+        }
+    }
+  </script>
+</html>

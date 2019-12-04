@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" type="text/css" href="equaçõesStyle.css">
+    <meta charset="utf-8">
+    <title>Lei da Gravidade</title>
+  </head>
+  
+  <body>
+    <div class="container">
+      <div id="menu">
+        <ul class="nav">
+          <li><a href="Home.html">voltar</a></li>
+        </ul> 
+      </div>
+      <div class="bloco bloco-equacoes">
+        <!-- primeira coluna -->
+        <div class="primeira-coluna">
+          <h2 class="title title-nome-equacao">Lei da Gravidade</h2>
+        </div>
+        <!-- segunda coluna -->
+        <div class="segunda-coluna">
+          <h2 class="title title-equacao"><p> F = G ∙ 
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac>
+                <mrow>
+                  <mn> m1 </mn>
+                  <mo> ∙ </mo>
+                  <mn> m2 </mn>
+                </mrow>
+                <mn> d <sup>2</sup> </mn>
+            </mfrac>
+          </math>
+          </p></h2>
+          <!--form class="form" name="myForm" method="post"-->
+            <p> F: <input id="f" name="f" type="text"> </p>
+            <p> G: <input id="g" name="g" type="text"> </p>
+            <p> m1: <input id="m1" name="m1" type="text"> </p>
+            <p> m2: <input id="m2" name="m2" type="text"> </p>
+            <p> d: <input id="d" name="d" type="text"> </p>
+            <p> Resultado: </p>
+            <p id="result"></p>
+            <button onclick="resultado()" class="btn btn1" type="submit" value="Submit" name="resolver">resolver</button>
+          <!--/form-->
+        </div>
+      </div>
+    </div>
+  </body>
+  
+  <script>
+    function resultado() {
+        var f = document.getElementById("f").value;
+        var g = document.getElementById("g").value;
+        var m1 = document.getElementById("m1").value;
+        var m2 = document.getElementById("m2").value;
+        var d = document.getElementById("d").value;
+        var resultado;
+        var contador = 0;
+
+        if (f != "") {
+            contador++;
+        }
+        if (g != "") {
+            contador++;
+        }
+        if (m1 != "") {
+            contador++;
+        } 
+        if (m2 != "") {
+            contador++;
+        }
+        if (d != "") {
+            contador++;
+        }
+        if (contador < 4) {
+            alert("Digite pelo menos quatro valores");
+            return false;
+        }
+        else if (contador == 5) {
+            alert("Um dos valores não deve ser informado");
+            return false;
+        }
+        else {
+            if (f == "" && g != "" && m1 != "" && m2 != "" && d != "") {
+                resultado = g * ((m1 * m2) / (Math.pow(d,2)));
+            }
+            else if (f != "" && g == "" && m1 != "" && m2 != "" && d != "") {
+                resultado = f / ((m1 * m2) / (Math.pow(d,2)));
+            }
+            else if (f != "" && g != "" && m1 == "" && m2 != "" && d != "") {
+                resultado = ((f / g) * (Math.pow(d,2))) / m2;
+            }
+            else if (f != "" && g != "" && m1 != "" && m2 == "" && d != "" ) {
+                resultado = ((f / g) * (Math.pow(d,2))) / m1;
+            }
+            else if (f != "" && g != "" && m1 != "" && m2 != "" && d == "") {
+                resultado = Math.sqrt((m1 * m2) / (f / g))
+            }
+        }
+        document.getElementById("result").innerHTML = resultado;
+    }
+  </script>
+</html>

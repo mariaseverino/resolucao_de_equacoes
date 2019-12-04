@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="stylesheet" type="text/css" href="equaçõesStyle.css">
+    <meta charset="utf-8">
+    <title>Equação de Clapeyron</title>
+  </head>
+  
+  <body>
+    <div class="container">
+      <div id="menu">
+        <ul class="nav">
+          <li><a href="Home.html">voltar</a></li>
+        </ul> 
+      </div>
+      <div class="bloco bloco-equacoes">
+        <!-- primeira coluna -->
+        <div class="primeira-coluna">
+          <h2 class="title title-nome-equacao">Equação de Clapeyron</h2>
+        </div>
+        <!-- segunda coluna -->
+        <div class="segunda-coluna">
+          <h2 class="title title-equacao"><p>p ∙ V = n ∙ R ∙ T </p></h2>
+          <!--form class="form" name="myForm" method="post"-->
+            <p> p: <input id="p" name="p" type="text"> </p>
+            <p> V: <input id="v" name="v" type="text"> </p>
+            <p> n: <input id="n" name="n" type="text"> </p>
+            <p> R: <input id="r" name="r" type="text"> </p>
+            <p> T: <input id="t" name="t" type="text"> </p>
+            <p> Resultado: </p>
+            <p id="result"></p>
+            <button onclick="resultado()" class="btn btn1" type="submit" value="Submit" name="resolver">resolver</button>
+          <!--/form-->
+        </div>
+      </div>
+    </div>
+  </body>
+  
+  <script>
+    function resultado() {
+        var p = document.getElementById("p").value;
+        var v = document.getElementById("v").value;
+        var n = document.getElementById("n").value;
+        var r = document.getElementById("r").value;
+        var t = document.getElementById("t").value;
+        var contador = 0;
+        var resultado;
+        
+        if (p != "") {
+            contador++;
+        }
+        if (v != "") {
+            contador++;
+        }
+        if (n != "") {
+            contador++;
+        } 
+        if (r != "") {
+            contador++;
+        }
+        if (t != "") {
+            contador++;
+        }
+        if (contador < 4) {
+            alert("Digite pelo menos quatro valores");
+            return false;
+        }
+        else if (contador == 5) {
+            alert("Um dos valores não deve ser informado");
+            return false;
+        }
+        else {
+            if (p == "" && v != "" && n != "" && r != "" && t != "") {
+                resultado = (n*r*t)/v;
+            }
+            else if (p != "" && v == "" && n != "" && r != "" && t != "") {
+                resultado = (n*r*t)/p;
+            }
+            else if (p != "" && v != "" && n == "" && r != "" && t != "") {
+                resultado = (p*v)/(r*t);
+            }
+            else if (p != "" && v != "" && n != "" && r == "" && t != "") {
+                resultado = (p*v)/(n*t);
+            }
+            else if (p != "" && v != "" && n != "" && r != "" && t == "") {
+                resultado = (p*v)/(n*r);
+            }
+        }
+        document.getElementById("result").innerHTML = resultado;
+    }
+  </script>
+</html>

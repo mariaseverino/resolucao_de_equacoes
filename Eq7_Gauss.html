@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" type="text/css" href="equaçõesStyle.css">
+    <meta charset="utf-8">
+    <title>Equação de Gauss</title>
+  </head>
+  
+  <body>
+    <div class="container">
+      <div id="menu">
+         <ul class="nav">
+           <li><a href="Home.html">voltar</a></li>
+         </ul> 
+      </div>
+    <div class="bloco bloco-equacoes">
+        <!-- primeira coluna -->
+        <div class="primeira-coluna">
+          <h2 class="title title-nome-equacao">Equação de Gauss</h2>
+        </div>
+        <!-- segunda coluna -->
+        <div class="segunda-coluna">
+          <h2 class="title title-equacao"><p>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac>
+                <mrow>
+                  <mn> 1 </mn>
+                </mrow>
+                <mn> f </mn>
+            </mfrac>
+            <mo> = </mo>
+            <mfrac>
+                <mrow>
+                  <mn> 1 </mn>
+                </mrow>
+                <mn> p </mn>
+            </mfrac>
+            <mo> + </mo>
+            <mfrac>
+                <mrow>
+                  <mn> 1 </mn>
+                </mrow>
+                <mn> p' </mn>
+            </mfrac>
+          </math>
+          </p></h2>
+          <!--form class="form" name="myForm" method="post"-->
+            <p> f: <input id="f" name="f" type="text"> </p>
+            <p> p: <input id="p" name="p" type="text"> </p>
+            <p> p': <input id="p1" name="p1" type="text"> </p>
+            <p> Resultado: </p>
+            <p id="result"></p>
+            <button onclick="resultado()" class= "btn btn1" type="submit" value="Submit" name="resolver">resolver</button>
+          <!--/form-->
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function resultado() {
+        var f = document.getElementById("f").value;
+        var p = document.getElementById("p").value;
+        var p1 = document.getElementById("p1").value;
+        var resultado;
+        var contador = 0;
+
+        if (f != "") {
+            contador++;
+        }
+        if (p != "") {
+            contador++;
+        }
+        if (p1 != "") {
+            contador++;
+        } 
+        if (contador < 2) {
+            alert("Digite pelo menos dois valores");
+            return false;
+        }
+        else if (contador == 3) {
+            alert("Um dos valores não deve ser informado")
+            return false;
+        }
+        else {
+            if (f == "" && p != "" && p1 != "") {
+                resultado = 1/((1/p)+(1/p1));
+            }
+            else if (f != "" && p == "" && p1 != "") {
+                resultado = 1/((1/f)-(1/p1));
+            }
+            else if (f != "" && p != "" && p1 == "") {
+                resultado = 1/((1/f)-(1/p));
+            }
+        }
+        document.getElementById("result").innerHTML = resultado;
+    }
+  </script>
+</html>

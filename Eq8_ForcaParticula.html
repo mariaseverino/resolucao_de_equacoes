@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="stylesheet" type="text/css" href="equaçõesStyle.css">
+    <meta charset="utf-8">
+    <title>Força sobre uma Partícula</title>
+  </head>
+  
+  <body>
+    <div class="container">
+        <div id="menu">
+            <ul class="nav">
+               <li><a href="Home.html">voltar</a></li>
+            </ul> 
+        </div>
+    <div class="bloco bloco-equacoes">
+        <!-- primeira coluna -->
+        <div class="primeira-coluna">
+          <h2 class="title title-nome-equacao">Força sobre uma Partícula</h2>
+        </div>
+        <!-- segunda coluna -->
+        <div class="segunda-coluna">
+          <h2 class="title title-equacao"><p> F<sub>m</sub> = B ∙ i ∙ l ∙ sen(θ)</p></h2>
+          <!--form class="form" name="myForm" method="post"-->
+            <p> F<sub>m</sub>: <input id="f" name="f" type="text"> </p>
+            <p> B: <input id="b" name="b" type="text"> </p>
+            <p> i: <input id="i" name="i" type="text"> </p>
+            <p> l: <input id="l" name="l" type="text"> </p>
+            <p> θ: <input id="theta" name="theta" type="text" placeholder=""> </p>
+            <p> Resultado: </p>
+            <p id="result"></p>
+            <button onclick="resultado()" class="btn btn1" type="submit" value="Submit" name="resolver">resolver</button>
+          <!--/form-->
+        </div>
+      </div>
+    </div>
+  </body>
+  
+  <script>
+    function resultado() {
+        var f = document.getElementById("f").value;
+        var b = document.getElementById("b").value;
+        var i = document.getElementById("i").value;
+        var l = document.getElementById("l").value;
+        var theta = document.getElementById("theta").value;
+        var resultado;
+        var contador = 0;
+
+        if (f != "") {
+            contador++;
+        }
+        if (b != "") {
+            contador++;
+        }
+        if (i != "") {
+            contador++;
+        } 
+        if (l != "") {
+            contador++;
+        }
+        if (theta != "") {
+            contador++;
+        }
+        if (contador < 4) {
+            alert("Digite pelo menos quatro valores");
+            return false;
+        }
+        else if (contador == 5) {
+            alert("Um dos valores não deve ser informado");
+            return false;
+        }
+        else {
+            if (f == "" && b != "" && i != "" && l != "" && theta != "") {
+                resultado = b*i*l*(Math.sin(theta));
+            }
+            else if (f != "" && b == "" && i != "" && l != "" && theta != "") {
+                resultado = f / (i*l*(Math.sin(theta)));
+            }
+            else if (f != "" && b != "" && i == "" && l != "" && theta != "") {
+                resultado = f / (b*l*(Math.sin(theta)));
+            }
+            else if (f != "" && b != "" && i != "" && l == "" && theta != "" ) {
+                resultado = f /(b*i*(Math.sin(theta)));
+            }
+            else if (f != "" && b != "" && i != "" && l != "" && theta == "") {
+                resultado = Math.sinh(f / (b*i*l));
+            }
+		}
+        document.getElementById("result").innerHTML = resultado;
+    }
+  </script>
+</html>
